@@ -32,7 +32,7 @@ function setup_ambertools(){
     
     echo "CONDA = $CONDA"
     if [ "$CONDA" = "True" ]; then
-        conda install ambertools=${ambertools_version} -c ${conda_channel}
+        conda install -y ambertools=${ambertools_version} -c ${conda_channel}
     else
         wget ${ambertools_binary_url} -O ${binary_tarfile}
         tar -xf ${binary_tarfile}
