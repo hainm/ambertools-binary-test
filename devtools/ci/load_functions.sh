@@ -9,7 +9,7 @@ non_conda_root='http://ambermd.org/downloads/ambertools/non-conda/'
 
 fn='ambertools-17.0-0.13Apr17.tar.bz2'
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    ambertools_binary_url=${non_conda_root}/linux-64.$fn.${SECRETA_EXT}
+    ambertools_binary_url=${non_conda_root}/linux-64.$fn.${SECRET_EXT}
 else
     ambertools_binary_url=${non_conda_root}/osx-64.$fn.${SECRET_EXT}
 fi
