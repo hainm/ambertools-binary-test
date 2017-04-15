@@ -2,10 +2,19 @@
 
 url="http://ambermd.org/downloads/ambertools-dev/AmberTools17.tar.gz"
 tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
-# binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 amber_version='16'
 ambertools_version='17'
 conda_channel='http://ambermd.org/downloads/ambertools/conda/'
+non_conda_root='http://ambermd.org/downloads/ambertools/non-conda/'
+
+fn='ambertools-17.0-0.13Apr17.tar.bz2'
+if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    ambertools_binary_url=${non_conda_root}/linux-64.$fn.${SECRETA_EXT}
+else
+    ambertools_binary_url=${non_conda_root}/osx-64.$fn.${SECRET_EXT}
+fi
+echo "ambertools_binary_url $ambertools_binary_url"
+binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 
 
 function install_python(){
@@ -35,7 +44,8 @@ function setup_ambertools(){
         conda install -y ambertools=${ambertools_version} -c ${conda_channel}
     else
         wget ${ambertools_binary_url} -O ${binary_tarfile}
-        tar -xf ${binary_tarfile}
+        mv ${binary_tarfile} AT.tar.bz2
+        tar -xf AT.tar.bz2
     fi
     cd $cwd
 }
