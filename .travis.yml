@@ -36,10 +36,10 @@ addons:
 
 install:
     - source devtools/ci/load_functions.sh
-    - setup_ambertools
+    - setup_ambertools # from load_functions
 
 script:
-    - run_tests
+    - run_tests # from load_functions
 
 after_success:
     - echo "Congrats. Happy computing"
