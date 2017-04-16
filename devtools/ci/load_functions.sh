@@ -26,7 +26,7 @@ function install_python(){
 
 function setup_ambertools(){
     cwd=`pwd`
-    mkirt $HOME/source_code
+    mkdir $HOME/source_code
     cd $HOME/source_code
     wget $url -O $tarfile
     tar -xf $tarfile
