@@ -15,10 +15,10 @@ ambertools_version='17'
 function install_python(){
     set -ex
     if [ "$PYTHON_VERSION" = "2.7" ]; then
-        bash $HOME/source_code/amber${amber_version}AmberTools/src/configure_python --prefix $HOME
+        bash $HOME/source_code/amber${amber_version}/AmberTools/src/configure_python --prefix $HOME
         export PATH=$HOME/miniconda/bin:$PATH
     else
-        bash $HOME/source_code/amber${amber_version}AmberTools/src/configure_python --prefix $HOME -v 3
+        bash $HOME/source_code/amber${amber_version}/AmberTools/src/configure_python --prefix $HOME -v 3
         export PATH=$HOME/miniconda/bin:$PATH
     fi
 }
