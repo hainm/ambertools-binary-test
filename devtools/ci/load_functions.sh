@@ -30,10 +30,8 @@ function setup_ambertools(){
     cd $HOME/source_code
     wget $url -O $tarfile
     tar -xf $tarfile
-    ls .
     install_python
     cd $cwd
-    install_python
 
     wget ${ambertools_binary_url} -O ${binary_tarfile}
     if [ "$CONDA" = "True" ]; then
