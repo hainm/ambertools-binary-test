@@ -13,7 +13,7 @@ ambertools_version='17'
 
 
 function install_python(){
-    set -ex
+    set -e
     if [ "$PYTHON_VERSION" = "2.7" ]; then
         bash amber${amber_version}/AmberTools/src/configure_python --prefix $HOME
         export PATH=$HOME/miniconda/bin:$PATH
@@ -31,14 +31,15 @@ function setup_ambertools(){
     wget $url -O $tarfile
     tar -xf $tarfile
     install_python
-    cd $cwd
 
+    cd $HOME
     wget ${ambertools_binary_url} -O ${binary_tarfile}
     if [ "$CONDA" = "True" ]; then
         conda install ${binary_tarfile}
     else
         tar -xf ${binary_tarfile}
     fi
+    cd $cwd
 }
 
 
