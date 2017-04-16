@@ -7,7 +7,7 @@ if [ "$CONDA" = "True" ]; then
 else
     ambertools_binary_url='https://480-81537431-gh.circle-artifacts.com/0/tmp/circle-artifacts.SHoEmLc/ambertools-build/amber-conda-bld/non-conda-install/linux-64.ambertools-17.0-0.16Apr17.H0417.tar.bz2'
 fi
-binar_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
+binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 amber_version='16'
 ambertools_version='17'
 
