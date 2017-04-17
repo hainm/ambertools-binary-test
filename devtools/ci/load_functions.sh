@@ -2,14 +2,10 @@
 
 url="http://ambermd.org/downloads/ambertools-dev/AmberTools17.tar.gz"
 tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
-if [ "$CONDA" = "True" ]; then
-    ambertools_binary_url='https://480-81537431-gh.circle-artifacts.com/0/tmp/circle-artifacts.SHoEmLc/ambertools-build/amber-conda-bld/linux-64/ambertools-17.0-0.tar.bz2'
-else
-    ambertools_binary_url='https://480-81537431-gh.circle-artifacts.com/0/tmp/circle-artifacts.SHoEmLc/ambertools-build/amber-conda-bld/non-conda-install/linux-64.ambertools-17.0-0.16Apr17.H0417.tar.bz2'
-fi
-binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
+# binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 amber_version='16'
 ambertools_version='17'
+conda_channel='http://ambermd.org/downloads/ambertools/conda/
 
 
 function install_python(){
@@ -35,7 +31,7 @@ function setup_ambertools(){
     cd $HOME
     wget ${ambertools_binary_url} -O ${binary_tarfile}
     if [ "$CONDA" = "True" ]; then
-        conda install ${binary_tarfile}
+        conda install ambertools=${ambertools_version} -c ${conda_channel}
     else
         tar -xf ${binary_tarfile}
     fi
