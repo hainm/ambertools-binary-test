@@ -29,10 +29,11 @@ function setup_ambertools(){
     install_python
 
     cd $HOME
-    wget ${ambertools_binary_url} -O ${binary_tarfile}
+    
     if [ "$CONDA" = "True" ]; then
         conda install ambertools=${ambertools_version} -c ${conda_channel}
     else
+        wget ${ambertools_binary_url} -O ${binary_tarfile}
         tar -xf ${binary_tarfile}
     fi
     cd $cwd
