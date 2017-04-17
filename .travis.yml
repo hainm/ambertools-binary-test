@@ -2,12 +2,13 @@ language: cpp
 
 matrix:
   include:
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast} # AmberTools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa} # Ambertools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism} # Ambertools/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM} # amber17/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM} # amber17/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD} # amber17/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast} # AmberTools/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa} # Ambertools/test
+     #- { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism} # Ambertools/test
+     
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.MM} # amber17/test
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.QMMM} # amber17/test
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.sander.SEBOMD} # amber17/test
@@ -15,12 +16,13 @@ matrix:
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=mmpbsa} # Ambertools/test
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=rism} # Ambertools/test
 
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM} # amber17/test
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM} # amber17/test
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD} # amber17/test
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast} # AmberTools/test
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa} # Ambertools/test
-     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism} # Ambertools/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM} # amber17/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM} # amber17/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD} # amber17/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast} # AmberTools/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa} # Ambertools/test
+     #- { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism} # Ambertools/test
+     
      - { os: osx, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.MM} # amber17/test
      - { os: osx, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.QMMM} # amber17/test
      - { os: osx, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.sander.SEBOMD} # amber17/test
