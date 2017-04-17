@@ -30,6 +30,7 @@ function setup_ambertools(){
 
     cd $HOME
     
+    echo "CONDA = $CONDA"
     if [ "$CONDA" = "True" ]; then
         conda install ambertools=${ambertools_version} -c ${conda_channel}
     else
