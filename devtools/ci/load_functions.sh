@@ -5,7 +5,7 @@ tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
 # binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 amber_version='16'
 ambertools_version='17'
-conda_channel='http://ambermd.org/downloads/ambertools/conda/
+conda_channel='http://ambermd.org/downloads/ambertools/conda/'
 
 
 function install_python(){
