@@ -59,6 +59,10 @@ function setup_ambertools_circleci(){
 function run_tests(){
     if [ "$CONDA" = "True" ]; then
         export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
+        if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+            # for nab
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$AMBERHOME/lib
+        fi
     else
         source $HOME/amber${ambertools_version}/amber.sh
     fi
