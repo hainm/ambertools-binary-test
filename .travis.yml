@@ -64,17 +64,17 @@ before_install:
       brew install netcdf fftw;
       sudo sh devtools/ci/install_gfortran.sh;
     fi
+
+install:
+  - source devtools/ci/load_functions.sh
+  - setup_ambertools # from load_functions
+
+script:
+  - run_tests # from load_functions
   - shell_session_update(){
        echo "dummy";
     };
-
-install:
-    - source devtools/ci/load_functions.sh
-    - setup_ambertools # from load_functions
-
-script:
-    - run_tests # from load_functions
-
+    
 after_success:
     - echo "Congrats. Happy computing"
 
