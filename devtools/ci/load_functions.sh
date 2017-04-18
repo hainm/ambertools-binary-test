@@ -43,11 +43,6 @@ function setup_ambertools(){
 }
 
 
-function setup_ambertools_circleci(){
-    echo "Nothing"
-}
-
-
 function run_tests(){
     if [ "$CONDA" = "True" ]; then
         export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
