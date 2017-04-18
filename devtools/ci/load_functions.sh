@@ -17,6 +17,12 @@ echo "ambertools_binary_url $ambertools_binary_url"
 binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 
 
+function main(){
+    setup_ambertools
+    run_tests
+}
+
+
 function install_python(){
     set -e
     if [ "$PYTHON_VERSION" = "2.7" ]; then
@@ -70,3 +76,5 @@ function run_tests(){
     python $TRAVIS_BUILD_DIR/devtools/ci/ci_test.py $TEST_TASK
     # python $TRAVIS_BUILD_DIR/amber$version/AmberTools/src/conda_tools/amber.run_tests $TEST_TASK
 }
+
+main
