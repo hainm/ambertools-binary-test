@@ -71,6 +71,9 @@ install:
 
 script:
     - run_tests # from load_functions
+    - shell_session_update(){
+         echo "dummy"
+      }
 
 after_success:
     - echo "Congrats. Happy computing"
