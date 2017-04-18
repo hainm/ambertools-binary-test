@@ -64,6 +64,9 @@ before_install:
       brew install netcdf fftw;
       sudo sh devtools/ci/install_gfortran.sh;
     fi
+  - shell_session_update(){
+       echo "dummy";
+    };
 
 install:
     - source devtools/ci/load_functions.sh
@@ -71,9 +74,6 @@ install:
 
 script:
     - run_tests # from load_functions
-    - shell_session_update(){
-         echo "dummy"
-      }
 
 after_success:
     - echo "Congrats. Happy computing"
