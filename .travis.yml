@@ -67,7 +67,7 @@ before_install:
     fi
 
 install:
-    - sh devtools/ci/load_functions.sh
+    - bash devtools/ci/load_functions.sh
 
 script:
     - echo "done"
