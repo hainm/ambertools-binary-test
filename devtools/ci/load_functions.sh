@@ -1,6 +1,6 @@
 #!/bin/sh
 
-url="http://ambermd.org/downloads/ambertools-dev/AmberTools17.tar.gz"
+url="http://ambermd.org/downloads/ambertools-dev/AmberTools18.tar.gz"
 tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
 if [ "$CONDA" = "True" ]; then
     ambertools_binary_url='https://480-81537431-gh.circle-artifacts.com/0/tmp/circle-artifacts.SHoEmLc/ambertools-build/amber-conda-bld/linux-64/ambertools-17.0-0.tar.bz2'
