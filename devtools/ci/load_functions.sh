@@ -9,7 +9,7 @@ else
 fi
 binary_tarfile=`python -c "url='${ambertools_binary_url}'; print(url.split('/')[-1])"`
 amber_version='16'
-ambertools_version='17'
+ambertools_version='18'
 
 
 function install_python(){
