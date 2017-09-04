@@ -9,7 +9,8 @@ test:
     - source devtools/ci/load_functions.sh &&
       export TEST_TASK=all &&
       setup_ambertools &&
-      run_tests
+      run_tests &&
+      cp test_*log $HOME/
   post:
     - echo "not yet"
     - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
