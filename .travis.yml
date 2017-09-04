@@ -39,8 +39,7 @@ install:
     - setup_ambertools # from load_functions
 
 script:
-    - echo "skip test for caching first"
-      # - run_tests # from load_functions
+    - run_tests # from load_functions
 
 after_success:
     - echo "Congrats. Happy computing"
