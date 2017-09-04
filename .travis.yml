@@ -12,7 +12,7 @@ cache:
 
 matrix:
   include:
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=all } # conda=False is tested on circleci
 
 sudo: true
 
