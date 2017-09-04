@@ -1,0 +1,17 @@
+dependencies:
+  cache_directories:
+      - /home/ubuntu/source_code
+
+test:
+  override:
+    - sudo apt-get install xutils-dev
+    - echo "Start testing"
+    - source devtools/ci/load_functions.sh &&
+      export TEST_TASK=all &&
+      setup_ambertools &&
+      run_tests
+  post:
+    - echo "not yet"
+      # - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
+      # - ls $HOME/test*log
+      # - cp $HOME/test*log  $CIRCLE_ARTIFACTS/ambertools-binary-test
