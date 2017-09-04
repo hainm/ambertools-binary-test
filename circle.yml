@@ -12,6 +12,6 @@ test:
       run_tests
   post:
     - echo "not yet"
-      # - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
-      # - ls $HOME/test*log
-      # - cp $HOME/test*log  $CIRCLE_ARTIFACTS/ambertools-binary-test
+    - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
+    - ls $HOME/test*log
+    - cp $HOME/test*log  $CIRCLE_ARTIFACTS/ambertools-binary-test/
