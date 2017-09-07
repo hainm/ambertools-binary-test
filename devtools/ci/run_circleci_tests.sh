@@ -1,3 +1,5 @@
+ambertools_version='18'
+
 function run_tests(){
     export PATH=$HOME/miniconda/bin:$PATH
     if [ "$CONDA" = "True" ]; then
