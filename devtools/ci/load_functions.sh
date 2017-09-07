@@ -76,10 +76,6 @@ function run_tests(){
     git clone https://github.com/Amber-MD/ambertools-binary-build
     cp ambertools-binary-build/conda_tools/amber.run_tests $AMBERHOME/bin/
     git clone https://github.com/Amber-MD/ambertools-ci-base
-    if [ "$CIRCLECI" = "true" ]; then
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS --circleci
-    else
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
-    fi
+    $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
     cp test*.log $HOME/
 }
