@@ -38,6 +38,7 @@ install:
     - source devtools/ci/load_functions.sh
     - sleep 10 # wait for circleci to download AT
     - setup_ambertools # from load_functions
+    - setup_tests # from load_functions
 
 script:
     - run_tests # from load_functions

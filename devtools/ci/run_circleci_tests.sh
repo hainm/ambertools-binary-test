@@ -8,3 +8,5 @@ function run_tests(){
     $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS --circleci
     cp test*.log $HOME/
 }
+
+run_tests

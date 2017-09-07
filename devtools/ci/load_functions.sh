@@ -78,7 +78,9 @@ function setup_tests(){
     git clone https://github.com/Amber-MD/ambertools-ci-base
 }
 
+
 function run_tests(){
+    # re-export for circleci
     export PATH=$HOME/miniconda/bin:$PATH
     if [ "$CONDA" = "True" ]; then
         export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
