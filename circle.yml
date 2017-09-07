@@ -5,8 +5,6 @@ dependencies:
 test:
   override:
     - sudo apt-get install xutils-dev
-    - source devtools/ci/load_functions.sh && setup_ambertools
-    - source devtools/ci/load_functions.sh && setup_tests
     - bash devtools/ci/run_circleci_tests.sh:
         parallel: true
   post:

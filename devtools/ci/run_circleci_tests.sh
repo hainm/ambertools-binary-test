@@ -2,6 +2,9 @@ ambertools_version='18'
 
 export TEST_TASK=fast
 
+source devtools/ci/load_functions.sh && setup_ambertools
+source devtools/ci/load_functions.sh && setup_tests
+
 function run_tests(){
     export PATH=$HOME/miniconda/bin:$PATH
     if [ "$CONDA" = "True" ]; then
