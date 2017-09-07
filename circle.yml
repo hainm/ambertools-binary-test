@@ -11,6 +11,7 @@ test:
       setup_ambertools &&
       run_tests &&
       cp test_*log $HOME/
+        parallel: true
   post:
     - echo "not yet"
     - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
