@@ -64,7 +64,7 @@ make_test_links(){
 }
 
 
-function run_tests(){
+function setup_tests(){
     export PATH=$HOME/miniconda/bin:$PATH
     if [ "$CONDA" = "True" ]; then
         export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
@@ -76,10 +76,15 @@ function run_tests(){
     git clone https://github.com/Amber-MD/ambertools-binary-build
     cp ambertools-binary-build/conda_tools/amber.run_tests $AMBERHOME/bin/
     git clone https://github.com/Amber-MD/ambertools-ci-base
-    if [ "$CIRCLECI" = "true" ]; then
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS --circleci
+}
+
+function run_tests(){
+    export PATH=$HOME/miniconda/bin:$PATH
+    if [ "$CONDA" = "True" ]; then
+        export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
     else
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
+        source $HOME/amber${ambertools_version}/amber.sh
     fi
+    $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
     cp test*.log $HOME/
 }
