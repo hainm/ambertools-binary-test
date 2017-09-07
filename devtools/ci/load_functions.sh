@@ -87,9 +87,6 @@ function run_tests(){
     else
         source $HOME/amber${ambertools_version}/amber.sh
     fi
-    if [ "$CIRCLECI" = "true" ]; then
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS --circleci
-    else
-        $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
+    $AMBERHOME/bin/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 4
     cp test*.log $HOME/
 }
