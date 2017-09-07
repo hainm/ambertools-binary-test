@@ -10,7 +10,7 @@ test:
       export TEST_TASK=all &&
       setup_ambertools &&
       run_tests &&
-      cp test_*log $HOME/
+      cp test_*log ${HOME}: 
         parallel: true
   post:
     - echo "not yet"
