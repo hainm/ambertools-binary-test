@@ -48,6 +48,6 @@ after_success:
 notifications:
   email:
     recipients:
-      - nhai.qn@gmail.com
+      - amberbot.2017@gmail.com
     on_success: never # default: change
-    on_failure: never # default: always
+    on_failure: always
