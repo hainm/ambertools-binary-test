@@ -4,7 +4,7 @@ dependencies:
 
 test:
   override:
-    - sudo apt-get install xutils-dev
+    - sudo apt-get install xutils-dev csh
     - echo "Start testing"
     - source devtools/ci/load_functions.sh &&
       export TEST_TASK=all &&
