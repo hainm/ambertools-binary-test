@@ -5,8 +5,12 @@ dependencies:
 test:
   override:
     - sudo apt-get install xutils-dev
-    - bash devtools/ci/run_circleci_tests.sh:
-        parallel: true
+    - echo "Start testing"
+    - source devtools/ci/load_functions.sh &&
+      export TEST_TASK=all &&
+      setup_ambertools &&
+      run_tests &&
+      cp test_*log $HOME/
   post:
     - echo "not yet"
     - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
