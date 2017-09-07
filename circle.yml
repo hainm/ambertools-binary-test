@@ -7,7 +7,7 @@ test:
     - sudo apt-get install xutils-dev csh
     - echo "Start testing"
     - source devtools/ci/load_functions.sh &&
-      export TEST_TASK=all &&
+      export TEST_TASK=fast &&
       setup_ambertools &&
       run_tests &&
       cp test_*log $HOME/
