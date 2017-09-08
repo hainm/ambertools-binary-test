@@ -21,6 +21,8 @@ function install_python(){
 
 function setup_ambertools(){
     echo "HOME = $HOME"
+    install_python
+
     cwd=`pwd`
     cd $HOME
     python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
@@ -36,7 +38,6 @@ function setup_ambertools(){
 
     cd $HOME/source_code
     tar -xf $tarfile
-    install_python
     cd $cwd
 }
 
