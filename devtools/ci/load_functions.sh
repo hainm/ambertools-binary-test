@@ -10,10 +10,10 @@ ambertools_version='18'
 function install_python(){
     set -e
     if [ "$PYTHON_VERSION" = "2.7" ]; then
-        bash amber${amber_version}/AmberTools/src/configure_python --prefix $HOME
+        bash $HOME/source_code/amber${amber_version}/AmberTools/src/configure_python --prefix $HOME
         export PATH=$HOME/miniconda/bin:$PATH
     else
-        bash amber${amber_version}/AmberTools/src/configure_python --prefix $HOME -v 3
+        bash $HOME/source_code/amber${amber_version}/AmberTools/src/configure_python --prefix $HOME -v 3
         export PATH=$HOME/miniconda/bin:$PATH
     fi
 }
@@ -21,10 +21,10 @@ function install_python(){
 
 function setup_ambertools(){
     echo "HOME = $HOME"
-    install_python
 
     cwd=`pwd`
     cd $HOME
+    python -m pip install request
     python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
     if [ "$CONDA" = "True" ]; then
         binary_tarfile=`ls ambertools*${ambertools_version}*tar.bz2`
@@ -38,6 +38,7 @@ function setup_ambertools(){
 
     cd $HOME/source_code
     tar -xf $tarfile
+    install_python
     cd $cwd
 }
 
