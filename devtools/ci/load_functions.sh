@@ -1,7 +1,8 @@
 #!/bin/sh
 
-url="http://ambermd.org/downloads/ambertools-dev/AmberTools18-dev.tar.gz"
-tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
+# url="http://ambermd.org/downloads/ambertools-dev/AmberTools18-dev.tar.gz"
+# tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
+tarfile=AmberTools18-dev.tar.gz
 amber_version='16'
 ambertools_version='18'
 
@@ -21,20 +22,8 @@ function install_python(){
 function setup_ambertools(){
     echo "HOME = $HOME"
     cwd=`pwd`
-    mkdir $HOME/source_code
-    cd $HOME/source_code
-    if [ ! -f $HOME/source_code/$tarfile ]; then
-        echo "Do not have $HOME/source_code/$tarfile"
-        echo "Downloading ..."
-        wget $url -O $tarfile
-    else
-        echo "Using cache folder $HOME/source_code/$tarfile"
-    fi
-    tar -xf $tarfile
-    install_python
-
     cd $HOME
-    python $cwd/devtools/ci/download_circleci_AmberTools.py
+    python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
     if [ "$CONDA" = "True" ]; then
         binary_tarfile=`ls ambertools*${ambertools_version}*tar.bz2`
         conda install ${binary_tarfile}
@@ -42,6 +31,12 @@ function setup_ambertools(){
         binary_tarfile=`ls linux-64.ambertools*${ambertools_version}*tar.bz2`
         tar -xf ${binary_tarfile}
     fi
+    mkdir $HOME/source_code
+    mv $tarfile $HOME/source_code
+
+    cd $HOME/source_code
+    tar -xf $tarfile
+    install_python
     cd $cwd
 }
 
