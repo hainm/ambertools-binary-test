@@ -24,7 +24,7 @@ function setup_ambertools(){
 
     cwd=`pwd`
     cd $HOME
-    python -m pip install request
+    python -m pip install requests
     python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
     if [ "$CONDA" = "True" ]; then
         binary_tarfile=`ls ambertools*${ambertools_version}*tar.bz2`
