@@ -12,19 +12,16 @@ cache:
 
 matrix:
   include:
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=fast } # conda=False is tested on circleci?
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.MM }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.QMMM }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=serial.sander.SEBOMD }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=mmpbsa }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=rism }
-
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast } # conda=False is tested on circleci?
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.0 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.1 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.0 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.1 }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism }
+
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=fast }
 
 sudo: true
 
