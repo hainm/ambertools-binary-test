@@ -9,10 +9,6 @@ test:
     - source devtools/ci/load_functions.sh &&
       export TEST_TASK=fast &&
       setup_ambertools &&
-      run_tests &&
-      cp test_*log $HOME/
+      run_tests || exit 1
   post:
     - echo "not yet"
-    - mkdir $CIRCLE_ARTIFACTS/ambertools-binary-test
-    - ls $HOME/test*log
-    - cp $HOME/test*log  $CIRCLE_ARTIFACTS/ambertools-binary-test/
