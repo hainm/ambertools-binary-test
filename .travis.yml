@@ -19,6 +19,7 @@ matrix:
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.1 }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=pbsa }
      - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism }
 
      - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=fast }
