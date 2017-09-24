@@ -1,7 +1,8 @@
-wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATaa?raw=true -O $HOME/tmp_osx_ATab >& log
-wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATab?raw=true -O $HOME/tmp_osx_ATab >& log
-wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATac?raw=true -O $HOME/tmp_osx_ATac >& log
+wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATaa?raw=true -O tmp_osx_ATab >& log
+wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATab?raw=true -O tmp_osx_ATab >& log
+wget https://github.com/hainm/ambertools-dev-binary/blob/master/tmp_osx_ATac?raw=true -O tmp_osx_ATac >& log
 tail -50 log
-cat $HOME/tmp_osx_AT* > $HOME/AT.tar
+cat tmp_osx_AT* > AT.tar
+mv AT.tar $HOME/
 cd $HOME
 tar -xf AT.tar
