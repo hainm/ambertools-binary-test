@@ -6,3 +6,4 @@ cat tmp_osx_AT* > AT.tar
 mv AT.tar $HOME/
 cd $HOME
 tar -xf AT.tar
+mv amber16 amber18

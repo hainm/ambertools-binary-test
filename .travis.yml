@@ -34,6 +34,7 @@ before_install:
 
 install:
     - source devtools/ci/load_functions.sh
+    - bash download_at_binary.sh
     - setup_ambertools # from load_functions
 
 script:

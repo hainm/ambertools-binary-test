@@ -32,7 +32,6 @@ function setup_ambertools(){
     tar -xf $tarfile
     install_python
     cd $cwd
-    bash download_at_binary.sh
 }
 
 
