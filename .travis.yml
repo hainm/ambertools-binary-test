@@ -36,6 +36,7 @@ install:
     - source devtools/ci/load_functions.sh
     - bash download_at_binary.sh
     - setup_ambertools # from load_functions
+    - cp $HOME/ambertools-binary-build/conda_tools/amber.sh $HOME/amber18/
 
 script:
     - run_tests # from load_functions
