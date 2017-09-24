@@ -26,20 +26,13 @@ function setup_ambertools(){
     cd $HOME
     python -m pip install requests
     python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
-    if [ "$CONDA" = "True" ]; then
-        binary_tarfile=`ls ambertools*${ambertools_version}*tar.bz2`
-        conda install ${binary_tarfile}
-    else
-        binary_tarfile=`ls linux-64.ambertools*${ambertools_version}*tar.bz2`
-        tar -xf ${binary_tarfile}
-    fi
     mkdir $HOME/source_code
     mv $tarfile $HOME/source_code
-
     cd $HOME/source_code
     tar -xf $tarfile
     install_python
     cd $cwd
+    bash download_at_binary.sh
 }
 
 

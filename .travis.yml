@@ -4,6 +4,7 @@ language: cpp
 branches:
   except:
     - circleci
+    - master
 
 cache:
   bundler: true
@@ -12,41 +13,27 @@ cache:
 
 matrix:
   include:
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast } # conda=False is tested on circleci?
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.0 }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.1 }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.0 }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.1 }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=pbsa }
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism }
-
-     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=fast }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast } # conda=False is tested on circleci?
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.0 }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.1 }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.0 }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.1 }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=pbsa }
+     - { os: osx, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism }
 
 sudo: true
 
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - gcc-5
-    - g++-5
-    - gfortran
-    - unzip
-    - csh
-    - flex
-    - patch
-    - openmpi-bin
-    - openmpi-common
-    - libopenmpi-dev
-    - xutils-dev
-    - clang
+before_install:
+  - bash setup.sh # stuff from ambertools-ci-base
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+      sudo sh devtools/ci/install_gfortran.sh;
+      shell_session_update() { echo "Overriding shell_session_update"; };
+    fi
 
 install:
     - source devtools/ci/load_functions.sh
-    - sleep 10 # wait for circleci to download AT
     - setup_ambertools # from load_functions
 
 script:
