@@ -20,6 +20,7 @@ function install_python(){
 
 
 function setup_ambertools(){
+    set -ex
     echo "HOME = $HOME"
 
     cwd=$TRAVIS_BUILD_DIR
@@ -30,7 +31,7 @@ function setup_ambertools(){
     mv $tarfile $HOME/source_code
     cd $HOME/source_code
     tar -xf $tarfile
-    install_python
+    install_python > /dev/null
     cd $cwd
 }
 
