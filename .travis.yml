@@ -28,7 +28,6 @@ sudo: true
 before_install:
   - bash setup.sh # stuff from ambertools-ci-base
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-      # sudo sh devtools/ci/install_gfortran.sh;
       shell_session_update() { echo "Overriding shell_session_update"; };
     fi
 
