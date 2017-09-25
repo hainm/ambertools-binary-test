@@ -22,7 +22,7 @@ function install_python(){
 function setup_ambertools(){
     echo "HOME = $HOME"
 
-    cwd=`pwd`
+    cwd=$TRAVIS_BUILD_DIR
     cd $HOME
     python -m pip install requests
     python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
