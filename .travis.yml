@@ -28,15 +28,16 @@ sudo: true
 before_install:
   - bash setup.sh # stuff from ambertools-ci-base
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-      sudo sh devtools/ci/install_gfortran.sh;
+      # sudo sh devtools/ci/install_gfortran.sh;
       shell_session_update() { echo "Overriding shell_session_update"; };
     fi
 
 install:
+    - export at_tarfile=osx-64.ambertools-18.dev.py27.tar
     - source devtools/ci/load_functions.sh
-    - bash download_at_binary.sh
+    - pip install requests && python $HOME/ambertools-binary-build/conda_tools/download_binary_at_dev.py
+    - mv ${at_tarfile} $HOME && cd $HOME && tar -xf ${at_tarfile}
     - setup_ambertools # from load_functions
-    - cp $HOME/ambertools-binary-build/conda_tools/amber.sh $HOME/amber18/
 
 script:
     - run_tests # from load_functions
