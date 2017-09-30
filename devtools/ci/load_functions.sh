@@ -8,7 +8,6 @@ ambertools_version='18'
 
 
 function install_python(){
-    set -e
     if [ "$PYTHON_VERSION" = "2.7" ]; then
         bash $HOME/source_code/amber${amber_version}/AmberTools/src/configure_python --prefix $HOME
         export PATH=$HOME/miniconda/bin:$PATH
@@ -20,8 +19,8 @@ function install_python(){
 
 
 function setup_ambertools(){
-    set -ex
     echo "HOME = $HOME"
+    echo "Start setup_ambertools"
 
     cwd=$TRAVIS_BUILD_DIR
     cd $HOME
@@ -36,6 +35,7 @@ function setup_ambertools(){
     tar -xf $tarfile
     install_python > /dev/null
     cd $cwd
+    echo "Done setup_ambertools"
 }
 
 
