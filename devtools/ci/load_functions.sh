@@ -26,8 +26,11 @@ function setup_ambertools(){
     cwd=$TRAVIS_BUILD_DIR
     cd $HOME
     python -m pip install requests
-    python $cwd/devtools/ci/download_circleci_AmberTools.py # will download source code + binary
-    mkdir $HOME/source_code
+    python $cwd/devtools/ci/download_circleci_AmberTools.py > log.download
+    tail -50 log.download
+    if [ ! -d $HOME/source_code ]; then
+        mkdir $HOME/source_code
+    fi
     mv $tarfile $HOME/source_code
     cd $HOME/source_code
     tar -xf $tarfile
