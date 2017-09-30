@@ -64,7 +64,7 @@ function run_tests(){
     else
         source $HOME/amber${ambertools_version}/amber.sh
     fi
-    $AMBERHOME/bin/amber.setup_test_folders $HOME/source_code/amber${amber_version}
+    $AMBERHOME/bin/amber.setup_test_folders $HOME/source_code/amber${amber_version} --amberhome $AMBERHOME
     make_test_links # FIXME: remove in amber?
     git clone https://github.com/Amber-MD/ambertools-binary-build
     cp ambertools-binary-build/conda_tools/amber.run_tests $AMBERHOME/bin/
