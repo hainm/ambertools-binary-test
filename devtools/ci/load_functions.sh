@@ -62,12 +62,15 @@ function run_tests(){
     if [ "$CONDA" = "True" ]; then
         export AMBERHOME=`python -c "import sys; print(sys.prefix)"`
     else
-        source $HOME/amber${ambertools_version}/amber.sh
+        # Not sure why OSX on travis won't like soure amber.sh
+        export AMBERHOME=$HOME/amber${ambertools_version}
+        export PATH=$AMBERHOME/bin:$PATH
+        export PYTHONPATH=$AMBERHOME/lib/python${PYTHON_VERSION}/site-packages
     fi
+    git clone https://github.com/Amber-MD/ambertools-ci-base
     git clone https://github.com/Amber-MD/ambertools-binary-build
     cp ambertools-binary-build/conda_tools/amber.run_tests $HOME/
     cp ambertools-binary-build/conda_tools/amber.setup_test_folders $HOME/
     python $HOME/amber.setup_test_folders $HOME/source_code/amber${amber_version} --amberhome $HOME/amber${ambertools_version}
-    git clone https://github.com/Amber-MD/ambertools-ci-base
     $HOME/amber.run_tests -t $TEST_TASK -x ambertools-ci-base/EXCLUDED_TESTS -n 1 --debug
 }
