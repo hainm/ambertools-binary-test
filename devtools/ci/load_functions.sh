@@ -3,7 +3,7 @@
 # url="http://ambermd.org/downloads/ambertools-dev/AmberTools18-dev.tar.gz"
 # tarfile=`python -c "url='$url'; print(url.split('/')[-1])"`
 tarfile=AmberTools18-dev.tar.gz
-amber_version='16'
+amber_version='18'
 ambertools_version='18'
 
 
