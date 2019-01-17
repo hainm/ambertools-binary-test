@@ -1,0 +1,14 @@
+dependencies:
+  cache_directories:
+      - /home/ubuntu/source_code
+
+test:
+  override:
+    - sudo apt-get install xutils-dev csh
+    - echo "Start testing"
+    - source devtools/ci/load_functions.sh &&
+      export TEST_TASK=fast &&
+      setup_ambertools &&
+      run_tests || exit 1
+  post:
+    - echo "not yet"

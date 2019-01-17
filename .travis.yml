@@ -1,19 +1,28 @@
-language: cpp
+language: python
+
+# blocklist
+branches:
+  except:
+    - circleci
+
+cache:
+  bundler: true
+  directories:
+    - $HOME/source_code
 
 matrix:
   include:
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=serial.MM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=serial.QMMM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=serial.sander.SEBOMD} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=fast} # AmberTools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=mmpbsa} # Ambertools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=False TEST_TASK=rism} # Ambertools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=serial.MM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=serial.QMMM} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=serial.sander.SEBOMD} # amber17/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=fast} # AmberTools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=mmpbsa} # Ambertools/test
-     - { os: linux, env: PYTHON_VERSION=2.7 CONDA=True TEST_TASK=rism} # Ambertools/test
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=fast } # conda=False is tested on circleci?
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.0 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.MM.1 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.0 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.QMMM.1 }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=serial.sander.SEBOMD }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=mmpbsa }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=pbsa }
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=False TEST_TASK=rism }
+
+     - { os: linux, env: PYTHON_VERSION=2.7 conda=True TEST_TASK=fast }
 
 sudo: true
 
@@ -37,6 +46,7 @@ addons:
 
 install:
     - source devtools/ci/load_functions.sh
+    - sleep 10 # wait for circleci to download AT
     - setup_ambertools # from load_functions
 
 script:
@@ -48,6 +58,6 @@ after_success:
 notifications:
   email:
     recipients:
-      - nhai.qn@gmail.com
+      - amberbot.2017@gmail.com
     on_success: never # default: change
-    on_failure: always # default: always
+    on_failure: always
